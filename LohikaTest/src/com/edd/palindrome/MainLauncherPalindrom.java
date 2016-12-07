@@ -6,18 +6,28 @@ public class MainLauncherPalindrom {
 		String palindrome = args[0];
 		int size = palindrome.length();
 		boolean isPalindrom = true;
-		int j = 0;
-		if (size % 2 == 0) {
-			j = size / 2;
-		} else {
-			j = size / 2 - 1;
-		}
-		for (int i = 0; i < j; i++) {
+		int half = contHalfOfArray(size);
+		isPalindrom = isPolindrone(palindrome, size, isPalindrom, half);
+		System.out.println(isPalindrom);
+	}
+
+	private static boolean isPolindrone(String palindrome, int size, boolean isPalindrom, int half) {
+		for (int i = 0; i < half; i++) {
 			if (palindrome.charAt(i) != palindrome.charAt(size - 1 - i)) {
 				isPalindrom = false;
 				break;
 			}
 		}
-		System.out.println(isPalindrom);
+		return isPalindrom;
+	}
+
+	private static int contHalfOfArray(int size) {
+		int half = 0;
+		if (size % 2 == 0) {
+			half = size / 2;
+		} else {
+			half = size / 2 - 1;
+		}
+		return half;
 	}
 }
