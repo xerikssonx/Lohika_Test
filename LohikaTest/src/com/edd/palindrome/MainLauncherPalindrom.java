@@ -5,8 +5,18 @@ public class MainLauncherPalindrom {
 	public static void main(String[] args) {
 		String palindrome = args[0];
 		int size = palindrome.length();
+		int half = 0;
+		switch (size) {
+		case 0:
+			throw new RuntimeException("Cannot be empty");
+		case 3:
+			half = 1;
+			break;
+		default:
+			half = size % 2 == 0 ? size / 2 : size / 2 - 1;
+			break;
+		}
 		boolean isPalindrom = true;
-		int half = contHalfOfArray(size);
 		isPalindrom = isPolindrone(palindrome, size, isPalindrom, half);
 		System.out.println(isPalindrom);
 	}
@@ -21,13 +31,4 @@ public class MainLauncherPalindrom {
 		return isPalindrom;
 	}
 
-	private static int contHalfOfArray(int size) {
-		int half = 0;
-		if (size % 2 == 0) {
-			half = size / 2;
-		} else {
-			half = size / 2 - 1;
-		}
-		return half;
-	}
 }
